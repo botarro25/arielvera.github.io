@@ -3,139 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mendigo de amor | Ariel Vera</title>
+    <title>Libros | Ariel Vera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
     <style>
-        /* Mismo estilo editorial que la portada */
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background-color: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-        }
-        nav {
-            text-align: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        nav a {
-            text-decoration: none;
-            color: #555;
-            margin: 0 15px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        nav a:hover { color: #000; }
+        /* ESTILOS IDÉNTICOS */
+        body { font-family: 'Lora', serif; background-color: #fdfbf7; color: #111; margin: 0; padding: 0; line-height: 1.8; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
         
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        /* MENÚ */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 5%; background: #fff; border-bottom: 1px solid #eee; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; letter-spacing: -1px; }
+        .menu-links a { margin-left: 25px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #444; }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: normal;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-        .subtitle {
-            text-align: center;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-        .intro-emocional {
-            font-size: 1.1rem;
-            text-align: justify;
-            margin-bottom: 3rem;
-        }
-        .fragmento {
-            background-color: #fafafa;
-            padding: 30px;
-            margin: 2rem 0;
-            border-left: 2px solid #333;
-            font-style: italic;
-        }
-        .nota-aclaratoria {
-            font-size: 0.9rem;
-            color: #777;
-            text-align: center;
-            margin-top: 4rem;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-        .btn-container { text-align: center; margin-top: 3rem; }
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #333; /* Botón relleno para destacar */
-            color: #fff;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-        .btn:hover { opacity: 0.8; }
+        /* CONTENIDO LIBRO */
+        .book-container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 60px auto; padding: 0 20px; align-items: center; }
+        .book-cover { flex: 1; min-width: 300px; padding: 20px; text-align: center; }
+        .book-cover img { max-width: 300px; width: 100%; box-shadow: -10px 10px 30px rgba(0,0,0,0.2); }
         
-        footer {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #999;
-            padding: 2rem;
-        }
+        .book-info { flex: 1.5; padding: 40px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; line-height: 1.2; margin-bottom: 20px; text-transform: uppercase; }
+        .synopsis { font-style: italic; color: #555; margin-bottom: 30px; border-left: 3px solid #000; padding-left: 20px; }
+        
+        .btn-black { display: inline-block; background-color: #000; color: #fff; padding: 15px 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 20px; }
+        .btn-black:hover { opacity: 0.7; }
+
+        footer { background: #111; color: #fff; text-align: center; padding: 40px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px;}
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">Inicio</a>
-        <a href="mendigo.html" style="color:#000; font-weight:bold;">Mendigo de amor</a>
-        <a href="literatura.html">Literatura</a>
-        <a href="autor.html">Autor</a>
+        <div class="logo">Ariel Vera</div>
+        <div class="menu-links">
+            <a href="index.html">Inicio</a>
+            <a href="mendigo.html" style="font-weight: bold; border-bottom: 1px solid #000;">Libros</a>
+            <a href="autor.html">Sobre mí</a>
+        </div>
     </nav>
 
-    <div class="container">
-        
-        <header>
-            <h1>Mendigo de amor</h1>
-            <p class="subtitle">La antesala del dolor y la esperanza</p>
-        </header>
-
-        <div class="intro-emocional">
+    <div class="book-container">
+        <div class="book-cover">
+            <img src="portada.jpg" alt="Portada">
+        </div>
+        <div class="book-info">
+            <h1>Voces de un amor<br>no correspondido</h1>
+            <div class="synopsis">
+                "La anatomía de la espera y el silencio que nunca termina."
+            </div>
             <p>
-                A veces nos quedamos esperando migajas de afecto en puertas que nunca se abrirán. 
-                <strong>Mendigo de amor</strong> no es solo un texto; es el reconocimiento de esa vulnerabilidad.
-                Es para quienes han amado más de lo que han recibido.
+                Una obra visceral sobre todo aquello que callamos para no perder a quien nunca fue nuestro. 
+                A través de versos afilados, este libro explora la herida de amar en soledad.
             </p>
+            <br>
+            <h3>Disponible en:</h3>
+            <a href="https://amazon.com" class="btn-black">Amazon Kindle</a>
+            <a href="https://hotmart.com" class="btn-black" style="background: #fff; color:#000; border:1px solid #000; margin-left: 10px;">Hotmart</a>
         </div>
-
-        <div class="fragmento">
-            "Me convertí en un coleccionista de silencios, <br>
-            esperando que alguno de ellos <br>
-            me dijera que te quedarías."
-        </div>
-
-        <div class="fragmento">
-            "No duele que te vayas.<br>
-            Duele saber que nunca estuviste realmente."
-        </div>
-
-        <div class="btn-container">
-            <p>Descubre la historia completa en:</p>
-            <a href="index.html" class="btn">Leer "Voces de un amor no correspondido"</a>
-        </div>
-
-        <div class="nota-aclaratoria">
-            * Esta obra es la primera parte oficial del libro <em>Voces de un amor no correspondido</em>.
-        </div>
-
     </div>
 
-    <footer>
-        &copy; 2026 Ariel Vera.
-    </footer>
+    <footer>&copy; 2026 Ariel Vera.</footer>
 
 </body>
 </html>
