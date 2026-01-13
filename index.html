@@ -3,149 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voces de un amor no correspondido | Ariel Vera</title>
+    <title>Ariel Vera | Escritor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
     <style>
-        /* Estilo Editorial Minimalista */
+        /* --- ESTILOS GENERALES --- */
         body {
-            font-family: 'Georgia', 'Times New Roman', serif; /* Tipografía Serif clásica */
-            background-color: #ffffff; /* Fondo blanco puro */
-            color: #1a1a1a; /* Texto casi negro para lectura cómoda */
-            line-height: 1.8;
+            font-family: 'Lora', serif;
+            background-color: #fdfbf7; /* Un tono crema muy sutil como papel */
+            color: #111;
             margin: 0;
             padding: 0;
+            line-height: 1.8;
         }
 
-        /* Menú de navegación simple */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { opacity: 0.6; }
+
+        /* --- MENÚ SUPERIOR --- */
         nav {
-            text-align: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 5%;
+            background: #fff;
         }
-        nav a {
-            text-decoration: none;
-            color: #555;
-            margin: 0 15px;
-            font-size: 0.9rem;
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        .menu-links a {
+            margin-left: 25px;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-        nav a:hover { color: #000; }
-
-        /* Contenedor principal (centrado y estrecho para lectura) */
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            color: #444;
         }
 
-        /* Títulos */
-        h1 {
-            font-size: 2.5rem;
-            font-weight: normal;
-            margin-bottom: 0.5rem;
+        /* --- BARRAS NEGRAS (ESTILO MIGUEL GANE) --- */
+        .black-bar {
+            background-color: #000;
+            color: #fff;
             text-align: center;
-            letter-spacing: -0.5px;
+            padding: 12px 0;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+
+        /* --- SECCIÓN PRINCIPAL (LIBRO) --- */
+        .hero-split {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            min-height: 80vh;
+            background-color: #f4f4f4; /* Fondo gris muy suave para destacar */
+        }
+        .hero-text {
+            flex: 1;
+            padding: 5% 8%;
+            min-width: 300px;
+        }
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding: 40px;
+        }
+        /* La portada del libro */
+        .hero-image img {
+            max-width: 350px; 
+            width: 100%;
+            box-shadow: -10px 10px 30px rgba(0,0,0,0.2); /* Sombra elegante */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem; /* Título gigante */
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
         }
         .subtitle {
-            text-align: center;
-            color: #666;
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 40px;
             font-style: italic;
-            margin-bottom: 3rem;
         }
 
-        /* Secciones */
-        .section { margin-bottom: 4rem; }
-        
-        .quote-destacada {
-            font-size: 1.2rem;
-            text-align: center;
-            font-style: italic;
-            border-left: 3px solid #333;
-            padding-left: 20px;
-            margin: 2rem auto;
-            max-width: 500px;
-        }
-
-        /* Botones de Venta */
-        .botones-compra {
-            text-align: center;
-            margin-top: 2rem;
-        }
-        .btn {
+        /* BOTONES NEGROS */
+        .btn-black {
             display: inline-block;
-            padding: 12px 25px;
-            margin: 10px;
-            text-decoration: none;
-            border: 1px solid #333;
-            color: #333;
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #333;
+            background-color: #000;
             color: #fff;
+            padding: 15px 30px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid #000;
+        }
+        .btn-black:hover {
+            background-color: transparent;
+            color: #000;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
+        /* --- SECCIÓN POEMAS (3 COLUMNAS) --- */
+        .poems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 80px 10%;
+            background: #fff;
+        }
+        .poem-card {
+            padding: 20px;
+        }
+        .poem-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .poem-subtitle {
             font-size: 0.8rem;
-            color: #999;
-            padding: 2rem;
-            border-top: 1px solid #eee;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #000;
+            display: inline-block;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+
+        /* --- SECCIÓN BIO (FOTO DERECHA) --- */
+        .bio-section {
+            display: flex;
+            flex-wrap: wrap-reverse; /* Invierte orden en móvil */
+        }
+        .bio-text {
+            flex: 1;
+            padding: 80px;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .bio-image {
+            flex: 1;
+            background-image: url('foto.jpg'); /* TU FOTO DE AUTOR */
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #111;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* MÓVIL */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero-split, .bio-section { flex-direction: column; }
+            .menu-links { display: none; } /* Ocultar menú en móvil simple */
+            .bio-image { min-height: 300px; width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">Inicio</a>
-        <a href="mendigo.html">Mendigo de amor</a>
-        <a href="literatura.html">Literatura</a>
-        <a href="autor.html">Autor</a>
+        <div class="logo">Ariel Vera</div>
+        <div class="menu-links">
+            <a href="index.html">Inicio</a>
+            <a href="mendigo.html">Libros</a>
+            <a href="autor.html">Sobre mí</a>
+            <a href="#">Contacto</a>
+        </div>
     </nav>
 
-    <div class="container">
-        
-        <header class="section">
-            <h1>Voces de un amor no correspondido</h1>
-            <p class="subtitle">Una obra de Ariel Vera</p>
-            <img src="portada.jpg" alt="Portada del libro" style="max-width: 100%; width: 280px; display: block; margin: 3rem auto; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-            <div class="quote-destacada">
-                "Este libro es un viaje íntimo a los silencios que deja el amor cuando no se queda.
-A través de poemas cargados de nostalgia, deseo y ausencia, el autor explora la espera, la pérdida y la esperanza que persiste incluso cuando todo parece terminar. Cada verso es un reflejo honesto de lo que duele, pero también de lo que transforma."
-            </div>
-        </header>
+    <div class="black-bar">Novedad Editorial</div>
 
-        <section class="section">
-            <p><strong>Sinopsis</strong></p>
-            <p>
-                [Aquí pegarás tu sinopsis breve. Este es el espacio para enganchar al lector con la premisa central de tu poemario, explicando el dolor y la belleza de lo no correspondido.]
+    <header class="hero-split">
+        <div class="hero-image">
+            <img src="portada.jpg" alt="Voces de un amor no correspondido">
+        </div>
+        <div class="hero-text">
+            <h1>Voces de un<br>amor no<br>correspondido</h1>
+            <p class="subtitle">
+                "Aquí disecciono la anatomía de la espera y el silencio que nunca termina."
             </p>
-        </section>
-
-        <section class="section">
-            <p style="text-align: center;">***</p>
             <p>
-                A veces el amor no es recibir,<br>
-                sino la valentía de soltar<br>
-                lo que nunca fue nuestro.
+                Una obra visceral sobre todo aquello que callamos para no perder a quien nunca fue nuestro.
             </p>
-            <p style="text-align: center;">***</p>
-        </section>
+            <br>
+            <a href="https://hotmart.com" class="btn-black">Comprar Libro</a>
+        </div>
+    </header>
 
-        <div class="botones-compra section">
-            <p>Disponible ahora en:</p>
-            <a href="https://go.hotmart.com/G103824820S?dp=1" class="btn">Comprar en Hotmart</a> <a href="#" class="btn">Leer en Kindle</a>   </div>
+    <div class="black-bar">Algunos Poemas</div>
 
-        <section class="section" style="background-color: #fafafa; padding: 20px;">
-            <p><strong>Sobre el autor</strong></p>
-            <p>Ariel Vera escribe sobre la espera, el silencio y las historias que nunca terminan de ser.</p>
-        </section>
+    <section class="poems-grid">
+        <div class="poem-card">
+            <div class="poem-title">Te quiero<br>libre</div>
+            <div class="poem-subtitle">Voces de un amor</div>
+            <p>
+                Solo seré capaz de amarte si llevamos la libertad por bandera. 
+                No quiero encadenarte con mis condiciones, no quiero imponerte mis motivos.
+                <br><br>
+                A ti te quiero libre.
+            </p>
+        </div>
 
-    </div>
+        <div class="poem-card">
+            <div class="poem-title">Después,<br>mañana</div>
+            <div class="poem-subtitle">Fragmento</div>
+            <p>
+                Estaba rota, tanto como un trapo, y era dura, dura de roer.
+                Odiaba a los poetas, y se ponía hasta el final de dudas.
+                <br><br>
+                Y lloraba, y se corría, y no se acordaba de nada al día siguiente.
+            </p>
+        </div>
+
+        <div class="poem-card">
+            <div class="poem-title">Madrid<br>es ella</div>
+            <div class="poem-subtitle">Inédito</div>
+            <p>
+                Ella era toda la poesía que se escribía en la ciudad.
+                El verso más bonito de la Gran Vía, la boca más sexy de las esquinas rotas.
+                <br><br>
+                Madrid es ella, y yo, solo una de sus calles.
+            </p>
+        </div>
+    </section>
+
+    <div class="black-bar">Sobre el Autor</div>
+
+    <section class="bio-section">
+        <div class="bio-text">
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-transform: uppercase;">Ariel<br>Vera</h2>
+            <p>
+                Narra sus pensamientos desde el silencio de lo no dicho y de las historias que jamás llegaron a completarse.
+Su obsesión es dar voz a esos sentimientos que se quedan suspendidos en la garganta, porque aquello que alguna vez se quiso para sí terminó convertido en algo ajeno.
+En ese intento de nombrar lo innombrable, descubre que las palabras no siempre alcanzan, pero aun así insiste: porque callar es dejar que la memoria se oxide, y hablar es rescatar del olvido lo que pudo haber sido.
+Así, entre lo que se perdió y lo que nunca fue, se revela la paradoja de la vida: lo más íntimo suele volverse extraño, y lo que parecía eterno se disuelve en un instante.
+            </p>
+            <br>
+            <a href="autor.html" style="text-decoration: underline; font-weight: bold;">Leer biografía completa &rarr;</a>
+        </div>
+        <div class="bio-image"></div> </section>
 
     <footer>
         &copy; 2026 Ariel Vera. Todos los derechos reservados.
+        <br><br>
+        <span style="opacity: 0.5;">Instagram • TikTok • Twitter</span>
     </footer>
 
 </body>
