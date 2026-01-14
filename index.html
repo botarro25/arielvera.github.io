@@ -8,27 +8,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- ¡NUEVA PALETA DE COLORES VIBRANTE! --- */
+        /* --- VUELTA A LA PALETA CLÁSICA (Negro, Crema, Oro) --- */
         :root {
-            --bg-main: #F9F7F1;          /* Crema luminoso (papel) */
-            --text-dark: #1A2B3C;        /* Azul Noche Profundo (Tinta) - Reemplaza al negro */
-            --accent-gold: #D4AF37;      /* Oro Metálico Vibrante */
-            --accent-blue: #005F73;      /* Azul Petróleo Intenso (Nuevo acento secundario) */
+            --bg-main: #fdfbf7;      /* Crema suave */
+            --text-dark: #111111;    /* Negro puro */
+            --accent-gold: #c9a227;  /* Dorado clásico */
             --white: #ffffff;
         }
 
         html { scroll-behavior: smooth; }
-        /* Usamos el nuevo color de texto oscuro */
         body { font-family: 'Lora', serif; background-color: var(--bg-main); color: var(--text-dark); margin: 0; padding: 0; line-height: 1.8; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* --- ANIMACIONES (SE MANTIENEN IGUAL) --- */
+        /* --- ANIMACIONES PREMIUM (Se mantienen) --- */
         @keyframes fadeInUpBig { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes pulseGold {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(201, 162, 39, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
         }
         .scroll-trigger { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000); }
         .scroll-trigger.visible { opacity: 1; transform: translateY(0); }
@@ -38,112 +36,96 @@
         /* NAV */
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 0 5%; background: rgba(255,255,255,0.98); height: 80px; 
+            padding: 0 5%; background: rgba(255,255,255,0.95); height: 80px; 
             position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eaeaea; backdrop-filter: blur(10px);
             animation: fadeIn 1s ease-out;
         }
-        /* El logo usa el nuevo azul noche */
         .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; letter-spacing: -1px; color: var(--text-dark); }
         .menu-links { display: flex; gap: 35px; align-items: center; }
         .menu-links a { 
             font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; 
-            color: var(--text-dark); font-weight: 700; position: relative; opacity: 0.8;
+            color: #444; font-weight: 700; position: relative;
         }
-        .menu-links a:hover { color: var(--accent-gold); opacity: 1; }
+        .menu-links a:hover { color: var(--text-dark); }
         .menu-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent-gold); transition: 0.3s ease; }
         .menu-links a:hover::after { width: 100%; }
-        /* Botón de menú con el nuevo azul */
-        .btn-menu-highlight { border: 2px solid var(--accent-blue); color: var(--accent-blue) !important; padding: 8px 20px; transition: 0.3s; opacity: 1 !important;}
-        .btn-menu-highlight:hover { background: var(--accent-blue); color: var(--white) !important; }
+        /* Botón Blog destacado (Negro sólido) */
+        .btn-menu-highlight { border: 1px solid var(--text-dark); padding: 8px 20px; transition: 0.3s; }
+        .btn-menu-highlight:hover { background: var(--text-dark); color: var(--white); }
 
-        /* HERO (NUEVO DEGRADADO AZUL NOCHE) */
+        /* HERO (FONDO GENERADO POR CÓDIGO - NO NECESITAS IMAGEN) */
         .hero { 
             height: 95vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            /* CAMBIO CLAVE: El degradado ahora usa el azul noche profundo, no negro */
-            background: linear-gradient(rgba(26, 43, 60, 0.6), rgba(26, 43, 60, 0.85)), url('fondo-hero.jpg');
-            background-size: cover; background-position: center; 
+            /* Degradado elegante que simula oscuridad sin necesitar foto */
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
             color: var(--white); padding: 0 20px; overflow: hidden; position: relative;
         }
         
         .hero-subtitle-top { animation: fadeIn 1s ease-out 0.5s backwards; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; color: var(--accent-gold); font-weight: bold; }
-        .hero-title { animation: fadeInUpBig 1.2s ease-out 0.8s backwards; font-family: 'Playfair Display', serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 900; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hero-title { animation: fadeInUpBig 1.2s ease-out 0.8s backwards; font-family: 'Playfair Display', serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 900; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .hero-description { animation: fadeInUpBig 1.2s ease-out 1s backwards; font-size: 1.3rem; margin-bottom: 50px; opacity: 0.9; font-weight: 300; max-width: 700px; margin-left: auto; margin-right: auto; }
         .hero-buttons { animation: fadeIn 1s ease-out 1.4s backwards; }
 
-        /* BOTONES (NUEVOS COLORES) */
+        /* BOTONES */
         .btn { padding: 18px 40px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; font-size: 0.8rem; border: none; cursor: pointer; display: inline-block; margin: 10px; transition: all 0.4s; position: relative; z-index: 1; }
         
-        /* Botón Principal: ORO Vibrante */
         .btn-gold { 
-            background: var(--accent-gold); color: var(--text-dark); 
+            background: var(--accent-gold); color: #fff; 
             animation: pulseGold 2s infinite;
         }
-        .btn-gold:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4); animation: none; background: var(--white); color: var(--accent-gold);}
+        .btn-gold:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 20px 40px rgba(201, 162, 39, 0.4); animation: none; background: #fff; color: var(--accent-gold); }
         
-        /* Botón Secundario: AZUL PETRÓLEO (Nuevo) */
-        .btn-blue { 
-            background: transparent; border: 2px solid var(--white); color: var(--white);
-            overflow: hidden;
-        }
-        .btn-blue::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--accent-blue); transition: 0.4s; z-index: -1; }
-        .btn-blue:hover { border-color: var(--accent-blue); transform: translateY(-5px); }
-        .btn-blue:hover::before { width: 100%; }
+        .btn-outline { border: 2px solid #fff; color: #fff; background: transparent; overflow: hidden; }
+        .btn-outline::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: #fff; transition: 0.4s; z-index: -1; }
+        .btn-outline:hover { color: var(--text-dark); border-color: #fff; transform: translateY(-5px); }
+        .btn-outline:hover::before { width: 100%; }
 
         /* SECCIONES */
         section { padding: 120px 10%; position: relative; }
         .section-title { font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 80px; position: relative; color: var(--text-dark); }
-        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent-gold); margin: 25px auto 0; transition: 0.5s; width: 0; }
-        .section-title.visible::after { width: 80px; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--accent-gold); margin: 25px auto 0; transition: 0.5s; width: 0; }
+        .section-title.visible::after { width: 60px; }
 
-        /* POEMAS (INTERACCIÓN DE COLOR) */
+        /* POEMAS */
         .poems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         .poem-card { 
             padding: 50px 30px; background: var(--white); 
-            border-top: 4px solid transparent; position: relative;
-            box-shadow: 0 10px 40px rgba(26, 43, 60, 0.05); /* Sombra con tono azulado */
+            border-top: 3px solid transparent; position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03); 
             transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000); top: 0;
         }
-        /* Al hacer hover, usamos el ORO */
         .poem-card:hover { 
             top: -15px; border-top-color: var(--accent-gold);
-            box-shadow: 0 30px 70px rgba(212, 175, 55, 0.2); /* Sombra dorada al hover */
+            box-shadow: 0 30px 70px rgba(0,0,0,0.15); 
         }
         .poem-card h3 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 15px; transition: 0.3s; color: var(--text-dark); }
         .poem-card:hover h3 { color: var(--accent-gold); }
-        .poem-card p { color: rgba(26, 43, 60, 0.8); } /* Texto del poema en azul noche sutil */
+        .poem-card p { color: #555; }
 
-        /* BLOG HOOK (FONDO AZUL NOCHE) */
-        /* Usamos el nuevo color oscuro para el fondo */
+        /* BLOG HOOK */
         .blog-hook { background: var(--text-dark); color: var(--white); text-align: center; padding: 120px 20px; position: relative; overflow: hidden; }
-        .blog-hook-bg { position: absolute; top:0; left:0; width: 100%; height: 100%; background: url('fondo-hero.jpg'); opacity: 0.15; background-size: cover; transform: scale(1.1); transition: 1s; mix-blend-mode: overlay;}
-        .blog-hook:hover .blog-hook-bg { transform: scale(1.2) rotate(2deg); opacity: 0.2; }
         .blog-hook-content { position: relative; z-index: 2; }
 
         /* BIO */
         .bio-split { display: flex; gap: 80px; align-items: center; padding: 120px 10%; background: var(--white); }
-        /* Borde de la imagen en Azul Petróleo en lugar de oro, para contraste */
-        .bio-img-container { overflow: hidden; border-radius: 4px; box-shadow: 20px 20px 0 var(--accent-blue); transition: 0.5s; }
+        .bio-img-container { overflow: hidden; border-radius: 4px; box-shadow: 20px 20px 0 var(--accent-gold); transition: 0.5s; }
         .bio-img { width: 100%; max-width: 450px; transition: transform 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000); display: block;}
         .bio-img-container:hover .bio-img { transform: scale(1.1); }
-        /* Al hover, la sombra cambia a Oro */
-        .bio-img-container:hover { box-shadow: 15px 15px 0 var(--accent-gold); transform: translate(5px, 5px); }
+        .bio-img-container:hover { box-shadow: 10px 10px 0 var(--text-dark); transform: translate(5px, 5px); }
         
         /* CONTACTO & FOOTER */
         .contact-section { text-align: center; background: var(--bg-main); }
         .contact-email { font-size: 2.5rem; font-weight: 900; font-family: 'Playfair Display'; position: relative; display: inline-block; color: var(--text-dark); }
-        .contact-email::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--accent-blue); transition: 0.4s; z-index: -1; opacity: 0.3; }
-        .contact-email:hover { color: var(--accent-blue); }
-        .contact-email:hover::after { height: 40%; opacity: 0.6; }
+        .contact-email::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--accent-gold); transition: 0.4s; z-index: -1; opacity: 0.5; }
+        .contact-email:hover::after { height: 40%; opacity: 1; }
 
-        /* Footer en azul noche */
-        footer { background: var(--text-dark); color: rgba(255,255,255,0.6); text-align: center; padding: 80px 20px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+        footer { background: #000; color: #666; text-align: center; padding: 80px 20px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
         
         @media (max-width: 768px) { 
             .menu-links { display: none; } 
             .hero-title { font-size: 3rem !important; } 
             .bio-split { flex-direction: column; }
-            .btn { display: block; width: 100%; margin: 10px 0;}
         }
     </style>
 </head>
@@ -167,7 +149,7 @@
             <p class="hero-description">La anatomía de la espera y el silencio que nunca termina. Una obra visceral sobre lo que callamos.</p>
             <div class="hero-buttons">
                 <a href="https://amazon.com" class="btn btn-gold">Comprar Libro</a>
-                <a href="https://hotmart.com" class="btn btn-blue">Ver Muestra</a>
+                <a href="https://hotmart.com" class="btn btn-outline">Ver Muestra</a>
             </div>
         </div>
     </header>
@@ -191,11 +173,10 @@
     </section>
 
     <div class="blog-hook">
-        <div class="blog-hook-bg"></div>
         <div class="blog-hook-content scroll-trigger">
             <h3 style="font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 20px; color: var(--accent-gold);">Bitácora de Versos</h3>
             <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 40px; letter-spacing: 1px;">Lo que escribo cuando nadie mira.</p>
-            <a href="blog.html" class="btn btn-blue" style="border-color: var(--accent-gold); color: var(--accent-gold);">Entrar al Blog</a>
+            <a href="blog.html" class="btn btn-outline" style="border-color: var(--accent-gold); color: var(--accent-gold);">Entrar al Blog</a>
         </div>
     </div>
 
@@ -220,16 +201,6 @@
     </footer>
 
     <script>
-        // Parallax suave
-        window.addEventListener('scroll', function() {
-            const hero = document.querySelector('.hero');
-            let scrollPosition = window.pageYOffset;
-            if(scrollPosition < 800) {
-                 hero.style.backgroundPositionY = (scrollPosition * 0.4) + 'px';
-            }
-        });
-
-        // Scroll Triggers
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
