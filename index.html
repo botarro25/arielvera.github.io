@@ -8,105 +8,105 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- ESTILOS VISUALES MAESTROS --- */
+        /* --- ESTILOS MAESTROS (COPY-PASTE EN AMBOS ARCHIVOS) --- */
         :root { --accent: #c9a227; --dark: #111; --light: #fdfbf7; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Lora', serif; background-color: var(--light); color: var(--dark); margin: 0; padding: 0; line-height: 1.8; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         
-        /* --- NUEVAS ANIMACIONES (SCROLL REVEAL) --- */
-        /* Estado inicial: invisible y un poco más abajo */
-        .reveal-item {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Movimiento muy suave y elegante */
-        }
-        /* Estado final: visible y en su sitio (el JS añade esta clase) */
-        .reveal-item.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Retrasos para que los elementos aparezcan en escalera */
-        .delay-1 { transition-delay: 0.2s; }
-        .delay-2 { transition-delay: 0.4s; }
-        
-        /* NAV */
+        /* NAV: IDÉNTICO SIEMPRE */
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px 5%; background: rgba(255,255,255,0.95); /* Un poco transparente */
+            padding: 0 5%; background: #fff; height: 80px; /* Altura fija */
             position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid #eee;
-            height: 70px;
-            backdrop-filter: blur(10px); /* Efecto vidrio esmerilado moderno */
+            border-bottom: 1px solid #eaeaea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; color: #000; }
-        .menu-links { display: flex; gap: 30px; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; letter-spacing: -1px; color: #000; }
+        .menu-links { display: flex; gap: 35px; align-items: center; }
         .menu-links a { 
             font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; 
-            color: #333; font-weight: 600; position: relative;
+            color: #444; font-weight: 700; position: relative;
         }
         .menu-links a:hover { color: var(--accent); }
-        .menu-links a::after { content: ''; display: block; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
-        .menu-links a:hover::after { width: 100%; }
-        .btn-menu { border: 1px solid #000; padding: 5px 15px; transition: 0.3s; }
-        .btn-menu:hover { background: #000; color: #fff; }
-
-        /* HERO */
-        .hero { 
-            min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('fondo-hero.jpg');
-            background-size: cover; background-position: center; color: #fff; padding: 0 20px;
+        /* Botón de Blog destacado */
+        .btn-menu-highlight { 
+            border: 1px solid var(--dark); padding: 8px 20px; transition: 0.3s; 
         }
-        .hero-content { max-width: 800px; } /* Quitamos la animación antigua para usar la nueva */
-        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; font-weight: 900; }
+        .btn-menu-highlight:hover { background: var(--dark); color: #fff; }
+
+        /* --- ANIMACIONES CINEMA --- */
+        /* Clase para animar entrada (Slide Up) */
+        .animate-up {
+            opacity: 0; transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .animate-up.visible { opacity: 1; transform: translateY(0); }
         
-        /* BOTONES */
-        .btn { padding: 15px 35px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; border: 2px solid transparent; display: inline-block; margin: 10px; cursor: pointer; transition: 0.4s; }
-        .btn-gold { background: var(--accent); color: #fff; box-shadow: 0 5px 15px rgba(201, 162, 39, 0.3); }
-        .btn-gold:hover { background: #b08d1f; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(201, 162, 39, 0.5); }
-        .btn-outline { border-color: #fff; color: #fff; }
-        .btn-outline:hover { background: #fff; color: #000; transform: translateY(-3px); }
+        /* Retrasos para efecto escalera */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+
+        /* HERO (PORTADA) */
+        .hero { 
+            height: 95vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('fondo-hero.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed; /* Efecto Parallax */
+            color: #fff; padding: 0 20px;
+        }
+        .hero-content h1 { 
+            font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 900; 
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* BOTONES PREMIUM */
+        .btn { padding: 18px 40px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; font-size: 0.8rem; border: none; cursor: pointer; display: inline-block; margin: 10px; transition: 0.4s; position: relative; overflow: hidden; }
+        .btn-gold { background: var(--accent); color: #fff; }
+        .btn-gold:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(201, 162, 39, 0.4); }
+        .btn-outline { border: 2px solid #fff; color: #fff; background: transparent; }
+        .btn-outline:hover { background: #fff; color: #000; transform: translateY(-5px); }
 
         /* SECCIONES */
-        section { padding: 100px 10%; } /* Un poco más de aire */
-        .section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 60px; text-transform: uppercase; position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 20px auto 0; } /* Línea dorada elegante debajo de títulos */
+        section { padding: 120px 10%; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 80px; position: relative; }
+        .section-title::after { content: ''; display: block; width: 40px; height: 2px; background: var(--accent); margin: 20px auto 0; }
         
-        /* POEMAS (HOVER MEJORADO) */
-        .poems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        /* POEMAS (HOVER INTERACTIVO) */
+        .poems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         .poem-card { 
-            padding: 40px; background: #fff; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-            border-left: 4px solid var(--accent); 
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 50px 30px; background: #fff; 
+            border-top: 3px solid transparent;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03); 
+            transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .poem-card:hover { 
-            transform: translateY(-10px) scale(1.02); /* Se levanta y crece sutilmente */
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12); /* Sombra mucho más profunda */
+            transform: translateY(-15px) scale(1.02); 
+            border-top-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1); 
         }
-        
-        /* BLOG HOOK */
-        .blog-hook { background: var(--dark); color: #fff; text-align: center; padding: 100px 20px; }
-        .blog-hook h3 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        .poem-card h3 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 15px; }
+
+        /* BLOG PREVIEW (GANCHO) */
+        .blog-hook { background: #111; color: #fff; text-align: center; padding: 100px 20px; position: relative; }
+        .blog-hook::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--accent); }
         
         /* BIO & CONTACTO */
-        .bio-split { display: flex; gap: 60px; align-items: center; background: #fff; padding: 100px 10%; }
-        .bio-img { width: 100%; max-width: 350px; border-radius: 4px; box-shadow: 20px 20px 0 var(--accent); transition: 0.5s; }
-        .bio-img:hover { transform: scale(1.03); box-shadow: 10px 10px 0 var(--accent); }
-        .contact-section { text-align: center; background: var(--light); }
-        .contact-email { font-size: 1.8rem; font-weight: bold; border-bottom: 3px solid var(--accent); padding-bottom: 5px; font-family: 'Playfair Display'; }
-        .contact-email:hover { color: var(--accent); border-color: transparent; }
+        .bio-split { display: flex; gap: 60px; align-items: center; padding: 100px 10%; background: #fff; }
+        .bio-img { width: 100%; max-width: 400px; box-shadow: 20px 20px 0 var(--accent); transition: 0.5s; }
+        .bio-img:hover { transform: translate(5px, 5px); box-shadow: 10px 10px 0 var(--dark); }
+        
+        .contact-section { text-align: center; background: #fafafa; }
+        .contact-email { font-size: 2rem; font-weight: 900; font-family: 'Playfair Display'; border-bottom: 4px solid var(--accent); transition: 0.3s; }
+        .contact-email:hover { background: var(--accent); color: #fff; border-color: transparent; padding: 0 10px; }
 
         /* FOOTER */
-        footer { background: var(--dark); color: #777; text-align: center; padding: 60px; border-top: 1px solid #333; }
-        .social-links a { font-size: 1.2rem; margin: 0 15px; transition: 0.3s; }
-        .social-links a:hover { color: var(--accent); transform: translateY(-3px); }
+        footer { background: #000; color: #666; text-align: center; padding: 80px 20px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
         
         @media (max-width: 768px) { 
             .menu-links { display: none; } 
-            h1 { font-size: 2.5rem; } 
+            h1 { font-size: 3rem !important; } 
             .bio-split { flex-direction: column; }
-            .bio-img { box-shadow: 10px 10px 0 var(--accent); }
         }
     </style>
 </head>
@@ -116,92 +116,77 @@
         <div class="logo">Ariel Vera</div>
         <div class="menu-links">
             <a href="index.html" style="color: var(--dark);">Inicio</a>
-            <a href="blog.html" class="btn-menu">Blog</a>
-            <a href="#libro">Libro</a>
+            <a href="blog.html" class="btn-menu-highlight">Blog</a> <a href="#libro">Libro</a>
             <a href="#poemas">Poesía</a>
             <a href="#autor">Sobre mí</a>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-content reveal-item">
-            <p style="text-transform: uppercase; letter-spacing: 3px; color: var(--accent);">Novedad Editorial</p>
-            <h1>Voces de un amor<br>no correspondido</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">La anatomía de la espera y el silencio que nunca termina.</p>
-            <div>
-                <a href="https://amazon.com" class="btn btn-gold">Comprar en Amazon</a>
-                <a href="https://go.hotmart.com/G103824820S?dp=1" class="btn btn-outline">Ver en Hotmart</a>
+        <div class="hero-content">
+            <p class="animate-up" style="text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; color: var(--accent); font-weight: bold;">Novedad Editorial</p>
+            <h1 class="animate-up delay-100">Voces de un amor<br>no correspondido</h1>
+            <p class="animate-up delay-200" style="font-size: 1.3rem; margin-bottom: 50px; opacity: 0.9; font-weight: 300;">La anatomía de la espera y el silencio que nunca termina.</p>
+            <div class="animate-up delay-300">
+                <a href="https://amazon.com" class="btn btn-gold">Comprar Libro</a>
+                <a href="https://hotmart.com" class="btn btn-outline">Ver Muestra</a>
             </div>
         </div>
     </header>
 
     <section id="poemas">
-        <h2 class="section-title reveal-item">Fragmentos</h2>
+        <h2 class="section-title animate-up">Fragmentos</h2>
         <div class="poems-grid">
-            <div class="poem-card reveal-item delay-1">
+            <div class="poem-card animate-up delay-100">
                 <h3>Silencios</h3>
-                <p style="font-style: italic;">"Me convertí en un coleccionista de silencios, esperando que alguno de ellos me dijera que te quedarías."</p>
+                <p style="font-style: italic; color: #555;">"Me convertí en un coleccionista de silencios, esperando que alguno de ellos me dijera que te quedarías."</p>
             </div>
-            <div class="poem-card reveal-item delay-2">
+            <div class="poem-card animate-up delay-200">
                 <h3>Gramática</h3>
-                <p style="font-style: italic;">"Aprendí a deletrear tu nombre en braille sobre las cicatrices. Tu voz es jeroglífico en la pared de mi cueva de nostalgias."</p>
+                <p style="font-style: italic; color: #555;">"Aprendí a deletrear tu nombre en braille sobre las cicatrices. Tu voz es jeroglífico en la pared de mi cueva de nostalgias."</p>
             </div>
-            <div class="poem-card reveal-item delay-1">
+            <div class="poem-card animate-up delay-300">
                 <h3>Apuesta</h3>
-                <p style="font-style: italic;">"Jugué en la máquina tragamonedas de este amor, apostando, creyendo que la suerte era una forma de compromiso."</p>
+                <p style="font-style: italic; color: #555;">"Jugué en la máquina tragamonedas de este amor, apostando, creyendo que la suerte era una forma de compromiso."</p>
             </div>
         </div>
     </section>
 
-    <div class="blog-hook reveal-item">
-        <h3>Bitácora de Versos</h3>
-        <p>Lee poemas inéditos y reflexiones exclusivas en mi blog personal.</p>
-        <br>
-        <a href="blog.html" class="btn btn-outline" style="border-color: var(--accent); color: var(--accent);">Leer el Blog</a>
+    <div class="blog-hook">
+        <div class="animate-up">
+            <h3 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px;">Bitácora de Versos</h3>
+            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 40px;">Lo que escribo cuando nadie mira.</p>
+            <a href="blog.html" class="btn btn-outline" style="border-color: var(--accent); color: var(--accent);">Leer el Blog</a>
+        </div>
     </div>
 
     <div class="bio-split" id="autor">
-        <div class="reveal-item">
-            <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Sobre el Autor</h2>
-            <p>Estudiante de la Universidad Ecotec y estratega por naturaleza. Ariel Vera escribe para rescatar del olvido las historias que jamás llegaron a completarse.</p>
-            <p>Su obsesión es narrar desde el silencio de lo no dicho, creando un refugio para quienes aman en secreto.</p>
+        <div class="animate-up">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Ariel Vera</h2>
+            <p style="margin-bottom: 20px; font-size: 1.1rem;">Entre la estrategia y la poesía. Estudiante de la Universidad Ecotec, escribo para rescatar del olvido las historias que jamás llegaron a completarse.</p>
         </div>
-        <img src="foto.jpg" alt="Ariel Vera" class="bio-img reveal-item delay-1">
+        <img src="foto.jpg" alt="Ariel Vera" class="bio-img animate-up delay-200">
     </div>
 
-    <section class="contact-section reveal-item" id="contacto">
-        <h2 class="section-title">Contacto</h2>
-        <p style="margin-bottom: 40px; font-size: 1.1rem;">Colaboraciones y prensa</p>
+    <section class="contact-section animate-up" id="contacto">
+        <h2 class="section-title" style="margin-bottom: 40px;">Hablemos</h2>
         <a href="mailto:arielveraiba@hotmail.com" class="contact-email">arielveraiba@hotmail.com</a>
     </section>
 
     <footer>
-        <div class="social-links reveal-item">
-            <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-            <a href="https://tiktok.com"><i class="fab fa-tiktok"></i></a>
-            <a href="https://twitter.com"><i class="fab fa-x-twitter"></i></a>
-        </div>
-        <p class="reveal-item delay-1" style="margin-top: 20px;">&copy; 2026 Ariel Vera. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Ariel Vera. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Esta función detecta cuando un elemento entra en la pantalla
-        function revealOnScroll() {
-            var reveals = document.querySelectorAll('.reveal-item');
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150; // Empieza a animar 150px antes de que entre del todo
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-            }
-        }
-        // Escuchamos el scroll del ratón
-        window.addEventListener('scroll', revealOnScroll);
-        // Ejecutamos una vez al inicio para mostrar lo que ya se ve
-        revealOnScroll();
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-up').forEach((el) => observer.observe(el));
     </script>
 
 </body>
