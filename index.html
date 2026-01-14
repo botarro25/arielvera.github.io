@@ -24,7 +24,7 @@
             margin-left: 25px; font-size: 0.75rem; text-transform: uppercase; 
             letter-spacing: 2px; color: #333; font-weight: 600;
         }
-        .menu-links a:hover { color: #888; border-bottom: 1px solid #000;}
+        .menu-links a:hover, .menu-links a.active { color: #888; border-bottom: 1px solid #000;}
 
         /* BARRAS NEGRAS */
         .black-bar { background-color: #000; color: #fff; text-align: center; padding: 15px 0; font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 3px; font-size: 1.1rem; }
@@ -47,6 +47,10 @@
         .poem-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; }
         .poem-subtitle { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #000; display: inline-block; margin-bottom: 25px; color: #444; padding-bottom: 5px; }
         .poem-text { font-style: italic; font-size: 1.1rem; color: #222; border-left: 1px solid #ddd; padding-left: 20px; }
+
+        /* SECCIÓN BLOG PREVIEW (NUEVA) */
+        .blog-preview { text-align: center; padding: 80px 20px; background-color: #fdfbf7; border-top: 1px solid #eee; }
+        .blog-link { text-decoration: underline; font-weight: bold; font-family: 'Playfair Display', serif; font-size: 1.2rem; }
 
         /* SECCIÓN 3: BIO */
         .bio-section { display: flex; flex-wrap: wrap-reverse; }
@@ -80,8 +84,8 @@
     <nav>
         <div class="logo">Ariel Vera</div>
         <div class="menu-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#libro">Libro</a>
+            <a href="index.html">Inicio</a>
+            <a href="blog.html" style="color: #c9a227;">Blog</a> <a href="#libro">Libro</a>
             <a href="#poemas">Poesía</a>
             <a href="#autor">Sobre mí</a>
             <a href="#contacto">Contacto</a>
@@ -146,6 +150,12 @@
         </div>
     </section>
 
+    <div class="blog-preview">
+        <h3 style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 10px;">¿Quieres leer más?</h3>
+        <p style="margin-bottom: 20px;">Descubre poemas inéditos y el detrás de escena del libro en mi bitácora personal.</p>
+        <a href="blog.html" class="blog-link">Ir al Blog →</a>
+    </div>
+
     <div class="black-bar">Sobre el Autor</div>
     <section class="bio-section" id="autor">
         <div class="bio-text">
@@ -179,8 +189,8 @@
     <footer>
         <div class="social-links">
             <a href="https://www.instagram.com/arielveraiba/#" target="_blank">Instagram</a>
-            <a href="https://tiktok.com/@tu_usuario" target="_blank">TikTok</a>
-            <a href="https://twitter.com/tu_usuario" target="_blank">Twitter</a>
+            <a href="https://tiktok.com" target="_blank">TikTok</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
         </div>
         &copy; 2026 Ariel Vera. Todos los derechos reservados.
     </footer>
