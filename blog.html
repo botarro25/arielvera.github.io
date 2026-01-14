@@ -8,77 +8,93 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- ESTILOS MAESTROS (IDÉNTICOS AL INDEX) --- */
-        :root { --accent: #c9a227; --dark: #111; --light: #fdfbf7; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Lora', serif; background-color: var(--light); color: var(--dark); margin: 0; padding: 0; line-height: 1.8; overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        
-        /* NAV: IDÉNTICO */
-        nav { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 0 5%; background: #fff; height: 80px; 
-            position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid #eaeaea;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; letter-spacing: -1px; color: #000; }
-        .menu-links { display: flex; gap: 35px; align-items: center; }
-        .menu-links a { 
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; 
-            color: #444; font-weight: 700; position: relative;
-        }
-        .menu-links a:hover { color: var(--accent); }
-        /* Botón Activo en Blog */
-        .btn-menu-active { 
-            background: var(--dark); color: #fff !important; padding: 8px 20px; 
+        /* --- MISMA PALETA VIBRANTE DEL INDEX --- */
+        :root {
+            --bg-main: #F9F7F1;
+            --text-dark: #1A2B3C;        /* Azul Noche Profundo */
+            --accent-gold: #D4AF37;      /* Oro Metálico */
+            --accent-blue: #005F73;      /* Azul Petróleo */
+            --white: #ffffff;
         }
 
-        /* ANIMACIONES */
-        .animate-up { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .animate-up.visible { opacity: 1; transform: translateY(0); }
-        .delay-100 { transition-delay: 0.1s; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Lora', serif; background-color: var(--bg-main); color: var(--text-dark); margin: 0; padding: 0; line-height: 1.8; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* --- ANIMACIONES COMPARTIDAS --- */
+        @keyframes fadeInUpBig { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .scroll-trigger { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+        .scroll-trigger.visible { opacity: 1; transform: translateY(0); }
         .delay-200 { transition-delay: 0.2s; }
 
-        /* HERO BLOG (Estilo unificado con Home pero más corto) */
+        /* NAV (IDÉNTICO AL INDEX PARA NO HABER SALTOS) */
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 5%; background: rgba(255,255,255,0.98); height: 80px; 
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-out;
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; letter-spacing: -1px; color: var(--text-dark); }
+        .menu-links { display: flex; gap: 35px; align-items: center; }
+        .menu-links a { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dark); font-weight: 700; position: relative; opacity: 0.8; }
+        .menu-links a:hover { color: var(--accent-gold); opacity: 1; }
+        /* Botón Activo (Blog) */
+        .btn-menu-highlight { border: 2px solid var(--accent-blue); background: var(--accent-blue); color: var(--white) !important; padding: 8px 20px; opacity: 1 !important; }
+
+        /* HERO BLOG (VERSIÓN CORTA PERO IMPACTANTE) */
         .blog-hero { 
             height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('fondo-hero.jpg');
+            background: linear-gradient(rgba(26, 43, 60, 0.7), rgba(26, 43, 60, 0.9)), url('fondo-hero.jpg');
             background-size: cover; background-position: center; 
-            color: #fff; margin-bottom: 80px;
+            color: var(--white); margin-bottom: 80px; position: relative; overflow: hidden;
         }
-        .blog-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; }
+        /* Texto animado igual que la portada */
+        .blog-title { animation: fadeInUpBig 1.2s ease-out 0.5s backwards; font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; margin-bottom: 10px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .blog-subtitle { animation: fadeIn 1s ease-out 1s backwards; font-family: 'Lora', serif; font-style: italic; color: var(--accent-gold); font-size: 1.4rem; }
 
-        /* BLOG CARDS (Más llamativas) */
+        /* CONTENEDOR Y TARJETAS */
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px 100px 20px; }
         
         .article-card { 
-            background: #fff; padding: 60px; margin-bottom: 60px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-            border-left: 6px solid var(--dark); 
-            transition: 0.4s ease;
+            background: var(--white); padding: 60px; margin-bottom: 60px; border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(26, 43, 60, 0.05); /* Sombra azulada sutil */
+            border-left: 6px solid var(--text-dark); 
+            transition: 0.4s cubic-bezier(0.215, 0.610, 0.355, 1.000);
         }
         .article-card:hover { 
             transform: translateY(-10px); 
-            border-left-color: var(--accent); 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15); /* Sombra muy llamativa */
+            border-left-color: var(--accent-gold); /* Cambio a oro al hover */
+            box-shadow: 0 30px 60px rgba(26, 43, 60, 0.15); 
         }
+
+        .meta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-blue); display: block; margin-bottom: 15px; font-weight: 800;}
+        .title { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; color: var(--text-dark); }
+        .excerpt { font-size: 1.15rem; color: rgba(26, 43, 60, 0.8); margin-bottom: 30px; }
         
-        .meta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #999; display: block; margin-bottom: 15px; font-weight: 700;}
-        .title { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; color: #000; }
-        .excerpt { font-size: 1.15rem; color: #555; margin-bottom: 30px; }
-        
+        /* Enlace "Leer más" elegante */
         .read-more { 
             font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; 
-            color: var(--dark); border-bottom: 2px solid var(--accent); padding-bottom: 5px; transition: 0.3s; 
+            color: var(--text-dark); border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px; transition: 0.3s; 
         }
-        .read-more:hover { background: var(--accent); color: #fff; padding: 5px 15px; border-color: transparent; }
+        .read-more:hover { background: var(--accent-gold); color: var(--text-dark); padding: 5px 15px; border-color: transparent; }
 
-        /* CTA FINAL */
-        .cta-box { background: var(--dark); color: #fff; padding: 80px; text-align: center; margin-top: 60px; }
+        /* CTA FINAL (NUEVO ESTILO OSCURO) */
+        .cta-box { background: var(--text-dark); color: var(--white); padding: 80px; text-align: center; margin-top: 60px; border-radius: 2px; position: relative; overflow: hidden; }
+        .cta-box::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: url('fondo-hero.jpg'); opacity: 0.1; mix-blend-mode: overlay; background-size: cover; }
+        .cta-content { position: relative; z-index: 2; }
+        
+        .btn-cta { background: var(--white); color: var(--text-dark); padding: 18px 40px; text-transform: uppercase; font-weight: 900; display: inline-block; transition: 0.3s; margin-top: 30px; letter-spacing: 2px; border: 2px solid transparent;}
+        .btn-cta:hover { background: transparent; color: var(--accent-gold); border-color: var(--accent-gold); transform: translateY(-5px); }
 
-        footer { background: #000; color: #666; text-align: center; padding: 80px 20px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
-        @media (max-width: 768px) { .menu-links { display: none; } }
+        footer { background: var(--text-dark); color: rgba(255,255,255,0.6); text-align: center; padding: 80px 20px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+        
+        @media (max-width: 768px) { 
+            .menu-links { display: none; } 
+            .blog-title { font-size: 3rem; }
+        }
     </style>
 </head>
 <body>
@@ -87,23 +103,23 @@
         <div class="logo">Ariel Vera</div>
         <div class="menu-links">
             <a href="index.html">Inicio</a>
-            <a href="blog.html" class="btn-menu-active">Blog</a>
             <a href="index.html#libro">Libro</a>
             <a href="index.html#poemas">Poesía</a>
             <a href="index.html#autor">Sobre mí</a>
+            <a href="blog.html" class="btn-menu-highlight">Blog</a>
         </div>
     </nav>
 
     <header class="blog-hero">
-        <div class="animate-up">
-            <h1>Bitácora de Versos</h1>
-            <p style="font-size: 1.2rem; color: var(--accent); font-style: italic;">Lo inédito, lo borrado y lo que duele.</p>
+        <div>
+            <h1 class="blog-title">Bitácora de Versos</h1>
+            <p class="blog-subtitle">Lo inédito, lo borrado y lo que duele.</p>
         </div>
     </header>
 
     <div class="container">
 
-        <article class="article-card animate-up">
+        <article class="article-card scroll-trigger">
             <span class="meta">14 Enero 2026 | Inédito</span>
             <h2 class="title">El arte de soltar</h2>
             <div class="excerpt">
@@ -112,7 +128,7 @@
             <a href="#" class="read-more">Leer Artículo →</a>
         </article>
 
-        <article class="article-card animate-up delay-100">
+        <article class="article-card scroll-trigger delay-200">
             <span class="meta">10 Enero 2026 | Novedades</span>
             <h2 class="title">Lanzamiento Oficial</h2>
             <div class="excerpt">
@@ -121,10 +137,12 @@
             <a href="#" class="read-more">Leer Artículo →</a>
         </article>
 
-        <div class="cta-box animate-up">
-            <h3 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px; color: var(--accent);">¿Te gusta lo que lees?</h3>
-            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 40px;">La historia completa te espera en mi libro.</p>
-            <a href="https://amazon.com" style="background: #fff; color: #000; padding: 18px 40px; text-transform: uppercase; font-weight: bold; display: inline-block; transition: 0.3s;">Comprar Libro</a>
+        <div class="cta-box scroll-trigger">
+            <div class="cta-content">
+                <h3 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-gold);">¿Te gusta lo que lees?</h3>
+                <p style="font-size: 1.2rem; opacity: 0.9;">La historia completa te espera en mi libro.</p>
+                <a href="https://amazon.com" class="btn-cta">Comprar Libro</a>
+            </div>
         </div>
 
     </div>
@@ -134,6 +152,16 @@
     </footer>
 
     <script>
+        // Parallax para el header del blog
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.blog-hero');
+            let scrollPosition = window.pageYOffset;
+            if(scrollPosition < 600) {
+                 hero.style.backgroundPositionY = (scrollPosition * 0.4) + 'px';
+            }
+        });
+
+        // Activador de animaciones (Scroll Reveal)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -141,7 +169,8 @@
                 }
             });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.animate-up').forEach((el) => observer.observe(el));
+
+        document.querySelectorAll('.scroll-trigger').forEach((el) => observer.observe(el));
     </script>
 
 </body>
